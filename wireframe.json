@@ -1,0 +1,125 @@
+{
+  "version": 4,
+  "app_title": "Lekki web proxy dla Samsung Orsay",
+  "nav": {
+    "placement": "none",
+    "items": []
+  },
+  "pages": [
+    {
+      "id": "page-a0597137",
+      "name": "Strona główna proxy",
+      "route": "/",
+      "item_ref": {
+        "index": 0,
+        "text": "Zbudować ultralekki ekran startowy i pasek nawigacji w estetyce telewizyjnego terminala: czysty, kontrastowy układ, duża typografia systemowa, duże pola i przyciski, wyraźny fokus pilota, bez animacji i nowoczesnych zależności; zapewnić obsługę klawiatury/pilota oraz zgodność ze starszym JavaScript."
+      },
+      "blocks": [
+        {
+          "id": "home-header",
+          "type": "header",
+          "label": "Nagłówek usługi",
+          "hint": "Krótka nazwa i informacja, że proxy nie zapisuje danych",
+          "x": 0,
+          "y": 0,
+          "w": 12,
+          "h": 2,
+          "item_ref": {
+            "index": 0,
+            "text": "Zbudować ultralekki ekran startowy i pasek nawigacji w estetyce telewizyjnego terminala: czysty, kontrastowy układ, duża typografia systemowa, duże pola i przyciski, wyraźny fokus pilota, bez animacji i nowoczesnych zależności; zapewnić obsługę klawiatury/pilota oraz zgodność ze starszym JavaScript."
+          },
+          "type_source": "palette"
+        },
+        {
+          "id": "url-form",
+          "type": "form",
+          "label": "Pole adresu URL i przycisk OTWÓRZ",
+          "hint": "Bardzo duże pole tekstowe, duży kontrastowy przycisk i widoczny fokus pilota",
+          "x": 0,
+          "y": 2,
+          "w": 12,
+          "h": 4,
+          "item_ref": {
+            "index": 0,
+            "text": "Zbudować ultralekki ekran startowy i pasek nawigacji w estetyce telewizyjnego terminala: czysty, kontrastowy układ, duża typografia systemowa, duże pola i przyciski, wyraźny fokus pilota, bez animacji i nowoczesnych zależności; zapewnić obsługę klawiatury/pilota oraz zgodność ze starszym JavaScript."
+          },
+          "type_source": "palette"
+        },
+        {
+          "id": "home-help",
+          "type": "text",
+          "label": "Prosta instrukcja",
+          "hint": "Krótka wskazówka obsługi i obsługiwane protokoły HTTP/HTTPS",
+          "x": 0,
+          "y": 6,
+          "w": 12,
+          "h": 2,
+          "item_ref": {
+            "index": 0,
+            "text": "Zbudować ultralekki ekran startowy i pasek nawigacji w estetyce telewizyjnego terminala: czysty, kontrastowy układ, duża typografia systemowa, duże pola i przyciski, wyraźny fokus pilota, bez animacji i nowoczesnych zależności; zapewnić obsługę klawiatury/pilota oraz zgodność ze starszym JavaScript."
+          },
+          "type_source": "palette"
+        }
+      ],
+      "deleted_ids": []
+    },
+    {
+      "id": "page-df38da5a",
+      "name": "Widok przeglądania przez proxy",
+      "route": "/proxy",
+      "item_ref": {
+        "index": 2,
+        "text": "Połączyć ekran przeglądania z backendem, dodać działające akcje Wstecz, Dalej, Odśwież i Strona główna bez zapisywania historii na serwerze, czytelny ekran błędu, walidację adresu oraz kompletne instrukcje instalacji, uruchomienia lokalnego i wdrożenia wraz z końcową weryfikacją przepływu frontend–backend."
+      },
+      "blocks": [
+        {
+          "id": "proxy-nav",
+          "type": "nav",
+          "label": "Wstecz | Dalej | Odśwież | Strona główna",
+          "hint": "Stały pasek czterech dużych przycisków obsługiwanych pilotem",
+          "x": 0,
+          "y": 0,
+          "w": 12,
+          "h": 2,
+          "item_ref": {
+            "index": 2,
+            "text": "Połączyć ekran przeglądania z backendem, dodać działające akcje Wstecz, Dalej, Odśwież i Strona główna bez zapisywania historii na serwerze, czytelny ekran błędu, walidację adresu oraz kompletne instrukcje instalacji, uruchomienia lokalnego i wdrożenia wraz z końcową weryfikacją przepływu frontend–backend."
+          },
+          "type_source": "palette"
+        },
+        {
+          "id": "proxy-address",
+          "type": "form",
+          "label": "Bieżący adres i OTWÓRZ",
+          "hint": "Duże pole adresu umożliwiające przejście bez powrotu na start",
+          "x": 0,
+          "y": 2,
+          "w": 12,
+          "h": 2,
+          "item_ref": {
+            "index": 2,
+            "text": "Połączyć ekran przeglądania z backendem, dodać działające akcje Wstecz, Dalej, Odśwież i Strona główna bez zapisywania historii na serwerze, czytelny ekran błędu, walidację adresu oraz kompletne instrukcje instalacji, uruchomienia lokalnego i wdrożenia wraz z końcową weryfikacją przepływu frontend–backend."
+          },
+          "type_source": "palette"
+        },
+        {
+          "id": "proxy-content",
+          "type": "text",
+          "label": "Pobrana strona albo komunikat błędu",
+          "hint": "Lekki obszar dokumentu proxy; w razie błędu kod, opis i duży przycisk powrotu",
+          "x": 0,
+          "y": 4,
+          "w": 12,
+          "h": 8,
+          "item_ref": {
+            "index": 2,
+            "text": "Połączyć ekran przeglądania z backendem, dodać działające akcje Wstecz, Dalej, Odśwież i Strona główna bez zapisywania historii na serwerze, czytelny ekran błędu, walidację adresu oraz kompletne instrukcje instalacji, uruchomienia lokalnego i wdrożenia wraz z końcową weryfikacją przepływu frontend–backend."
+          },
+          "type_source": "palette"
+        }
+      ],
+      "deleted_ids": []
+    }
+  ],
+  "attached_to_plan": false
+}

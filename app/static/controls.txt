@@ -1,0 +1,124 @@
+(function () {
+    'use strict';
+    var ids = ['back', 'forward', 'reload', 'home', 'url', 'open', 'retry', 'error-home'];
+    var controls = [];
+    var form = document.getElementById('address-form');
+    var address = document.getElementById('url');
+    var error = document.getElementById('address-error');
+    var i;
+
+    function listen(element, name, handler) {
+        if (!element) { return; }
+        if (element.addEventListener) {
+            element.addEventListener(name, handler, false);
+        } else if (element.attachEvent) {
+            element.attachEvent('on' + name, handler);
+        } else {
+            element['on' + name] = handler;
+        }
+    }
+    function cancel(event) {
+        if (event.preventDefault) { event.preventDefault(); }
+        event.returnValue = false;
+    }
+    function showError(message) {
+        if (error) {
+            while (error.firstChild) { error.removeChild(error.firstChild); }
+            error.appendChild(document.createTextNode(message));
+        }
+        if (!address) { return; }
+        address.setAttribute('aria-invalid', 'true');
+        address.focus();
+    }
+    function prepareAddress(event) {
+        if (!address) { cancel(event); return; }
+        var value = address.value.replace(/^\s+|\s+$/g, '');
+        var parsed = document.createElement('a');
+        if (!value) {
+            cancel(event);
+            showError('Wpisz adres strony, którą chcesz otworzyć.');
+            return;
+        }
+        if (!/^https?:\/\//i.test(value)) {
+            if (/^[a-z][a-z0-9+.-]*:/i.test(value) || /^\/\//.test(value)) {
+                cancel(event);
+                showError('Użyj pełnego adresu http:// lub https://.');
+                return;
+            }
+            value = 'https://' + value;
+        }
+        parsed.href = value;
+        if (!parsed.hostname || value.length > 8192 || /[\s\\\x00-\x1f\x7f]/.test(value) || /^https?:\/\/[^\/?#]*@/i.test(value) || !/^https?:\/\/[^\/?#]+/i.test(value)) {
+            cancel(event);
+            showError('Sprawdź adres. Podaj nazwę strony bez spacji.');
+            return;
+        }
+        address.removeAttribute('aria-invalid');
+        address.value = value;
+        /* Native GET submit encodes the URL without a network API. */
+    }
+    function markFocus(element) {
+        var j;
+        for (j = 0; j < controls.length; j += 1) {
+            controls[j].className = controls[j].className.replace(/\s*remote-focus/g, '');
+        }
+        element.className += ' remote-focus';
+    }
+    function bindFocus(element) {
+        listen(element, 'focus', function () { markFocus(element); });
+        listen(element, 'blur', function () {
+            element.className = element.className.replace(/\s*remote-focus/g, '');
+        });
+    }
+    for (i = 0; i < ids.length; i += 1) {
+        var control = document.getElementById(ids[i]);
+        if (control) { controls.push(control); bindFocus(control); }
+    }
+    listen(form, 'submit', function (event) { prepareAddress(event || window.event); });
+    listen(document.getElementById('back'), 'click', function () { window.history.back(); });
+    listen(document.getElementById('forward'), 'click', function () { window.history.forward(); });
+    listen(document.getElementById('reload'), 'click', function () { window.location.reload(); });
+    listen(document, 'keydown', function (event) {
+        var e = event || window.event;
+        var key = e.which || e.keyCode;
+        var target = e.target || e.srcElement;
+        var index = -1;
+        var next;
+        var j;
+        if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) { return; }
+        for (j = 0; j < controls.length; j += 1) {
+            if (controls[j] === target) { index = j; break; }
+        }
+        if (key === 13) {
+            if (target === address && document.getElementById('open')) {
+                cancel(e);
+                document.getElementById('open').click();
+            } else if (index >= 0) {
+                cancel(e);
+                controls[index].click();
+            }
+            return;
+        }
+        if (key < 37 || key > 40) { return; }
+        if (index < 0) { return; }
+        if (target === address && (key === 37 || key === 39)) {
+            /* Keep native caret movement; leave the field only at an edge. */
+            if (typeof address.selectionStart !== 'number') { return; }
+            if (address.selectionStart !== address.selectionEnd) { return; }
+            if (key === 37 && address.selectionStart > 0) { return; }
+            if (key === 39 && address.selectionEnd < address.value.length) { return; }
+        }
+        next = index;
+        if (key === 37 || key === 38) { next = Math.max(0, index - 1); }
+        else { next = index + 1; }
+        if (next >= controls.length) {
+            var content = document.getElementById('remote-content');
+            var links = content ? content.getElementsByTagName('a') : [];
+            if (links.length) { cancel(e); links[0].focus(); }
+            return;
+        }
+        cancel(e);
+        controls[next].focus();
+    });
+    if (address) { address.focus(); }
+}());

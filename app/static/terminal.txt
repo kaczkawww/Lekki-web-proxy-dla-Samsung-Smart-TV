@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>ORSAY — terminal internetowy</title>
+<link rel="stylesheet" href="/terminal/static/styles.css">
+</head>
+<body>
+<div id="terminal">
+  <div id="masthead"><span class="brand">ORSAY<span class="brand-dot">.</span></span><span class="edition">TERMINAL INTERNETOWY <span class="divider">/</span> SAMSUNG TV</span></div>
+  <div id="navigation" role="navigation" aria-label="Nawigacja przeglądarki">
+    <button id="back" type="button" class="nav-control"><span aria-hidden="true">&#8592;</span> Wstecz</button>
+    <button id="forward" type="button" class="nav-control"><span aria-hidden="true">&#8594;</span> Dalej</button>
+    <button id="reload" type="button" class="nav-control"><span aria-hidden="true">&#8635;</span> Odśwież</button>
+    <a id="home" class="nav-control" href="/terminal/">Strona główna <span aria-hidden="true">&#8962;</span></a>
+  </div>
+  <div id="content" role="main">
+    <p class="eyebrow">01 <span class="eyebrow-line">/</span> STRONA GŁÓWNA</p>
+    <h1>Internet. Na dużym ekranie.</h1>
+    <p class="intro">Wpisz adres strony i otwórz ją na telewizorze.</p>
+    <form id="address-form" action="/proxy" method="get">
+      <label for="url">ADRES STRONY</label>
+      <div class="address-row">
+        <input id="url" name="url" type="text" placeholder="https://example.com" autocomplete="off" autocapitalize="off" spellcheck="false" aria-describedby="url-hint address-error">
+        <button id="open" type="submit">OTWÓRZ <span aria-hidden="true">&#8594;</span></button>
+      </div>
+      <p id="url-hint" class="hint">Użyj adresu HTTP lub HTTPS. Bez prefiksu dodamy https://.</p>
+      <p id="address-error" role="alert" aria-live="polite"></p>
+    </form>
+    <div class="privacy"><span class="privacy-label">PRYWATNOŚĆ</span><p>Ten ekran nie zapisuje adresów ani historii na serwerze.<br>Historia przeglądarki może pozostać na urządzeniu.</p></div>
+    <noscript><p class="noscript">JavaScript jest wyłączony. Wpisz pełny adres z http:// lub https:// i wybierz OTWÓRZ. Przyciski Wstecz, Dalej i Odśwież wymagają JavaScript.</p></noscript>
+  </div>
+  <div id="footer"><span><span class="key">&#8592; &#8593; &#8595; &#8594;</span> Wybór pola</span><span><span class="key">ENTER / OK</span> Zatwierdź</span><span class="footer-note">PROSTO. CZYTELNIE. PILOTEM.</span></div>
+</div>
+<script src="/terminal/static/controls.js"></script>
+</body>
+</html>

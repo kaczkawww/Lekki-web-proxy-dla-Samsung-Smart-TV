@@ -1,0 +1,7 @@
+
+reflex[db]==0.9.11.post1
+fastapi
+starlette
+uvicorn
+httpx
+beautifulsoup4
